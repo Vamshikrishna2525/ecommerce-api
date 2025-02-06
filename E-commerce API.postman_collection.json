@@ -1,0 +1,282 @@
+{
+	"info": {
+		"_postman_id": "266362d8-c37d-4c59-83c2-6124f50a142c",
+		"name": "E-commerce API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40788933"
+	},
+	"item": [
+		{
+			"name": "GET /",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/?",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						""
+					],
+					"query": [
+						{
+							"key": null,
+							"value": null,
+							"description": "Sample route to check if the API is running."
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST /API/signup",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"username\": \"sampleuser\",\r\n  \"email\": \"sampleuser@example.com\",\r\n  \"password\": \"password123\",\r\n  \"role\": \"user\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST /API/login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"description": "Log in a user by providing email and password. Returns a JWT token upon successful authentication.",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"sampleuser@example.com\",\r\n  \"password\": \"password123\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST API/products",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwicm9sZSI6InVzZXIiLCJpYXQiOjE3Mzg4NjQzMTMsImV4cCI6MTczODg2NzkxM30.9eX0VrC3JHxUd-RxjIf6gamuoYkFIVk7oW9vsn8qcQw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Product Name\",\r\n  \"description\": \"Product Description\",\r\n  \"category\": \"Category Name\",\r\n  \"price\": 100.00,\r\n  \"start_date\": \"2025-02-06\",\r\n  \"expiry_date\": \"2025-12-31\",\r\n  \"free_delivery\": true,\r\n  \"image_url\": \"http://example.com/image.jpg\",\r\n  \"old_price\": 120.00,\r\n  \"new_price\": 100.00,\r\n  \"vendor_id\": 1\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/products?",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"products"
+					],
+					"query": [
+						{
+							"key": null,
+							"value": null,
+							"description": " Create a new product (requires a valid JWT token in Authorization header)."
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT /API/products/:id",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwicm9sZSI6InVzZXIiLCJpYXQiOjE3Mzg4NjQzMTMsImV4cCI6MTczODg2NzkxM30.9eX0VrC3JHxUd-RxjIf6gamuoYkFIVk7oW9vsn8qcQw",
+						"description": "Update an existing product (requires a valid JWT token in Authorization header).",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Updated Product Name\",\r\n  \"description\": \"Updated Product Description\",\r\n  \"category\": \"Updated Category\",\r\n  \"price\": 110.00,\r\n  \"start_date\": \"2025-02-07\",\r\n  \"expiry_date\": \"2025-12-31\",\r\n  \"free_delivery\": false,\r\n  \"image_url\": \"http://example.com/updated_image.jpg\",\r\n  \"old_price\": 130.00,\r\n  \"new_price\": 110.00,\r\n  \"vendor_id\": 2\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/products/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"products",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /API/products/search",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwicm9sZSI6InVzZXIiLCJpYXQiOjE3Mzg4NjQzMTMsImV4cCI6MTczODg2NzkxM30.9eX0VrC3JHxUd-RxjIf6gamuoYkFIVk7oW9vsn8qcQw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/api/products/search?category=electronics",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"products",
+						"search"
+					],
+					"query": [
+						{
+							"key": "category",
+							"value": "electronics"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /API/products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /API/products/:id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/products/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"products",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE /api/products/:id",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwicm9sZSI6InVzZXIiLCJpYXQiOjE3Mzg4NjQzMTMsImV4cCI6MTczODg2NzkxM30.9eX0VrC3JHxUd-RxjIf6gamuoYkFIVk7oW9vsn8qcQw",
+						"description": "Delete a product by id (requires a valid JWT token in Authorization header).",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/api/products/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"products",
+						"4"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
